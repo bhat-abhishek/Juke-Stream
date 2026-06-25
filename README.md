@@ -11,37 +11,56 @@ https://user-images.githubusercontent.com/86356896/222892991-06e0b79e-e7b3-47d0-
 * Audio file upload with support for multiple file formats.
 * Playlist creation and management.
 * Audio streaming with player controls (play, pause, skip, etc.).
+* **Audio visualizer** — animated frequency bar display that appears above the player bar whenever a song is playing.
 * Responsive design for optimal viewing on any device.
 
-## Installation
+## RUNBOOK
 
-To run the application locally, you'll need to have Node.js and MongoDB installed on your machine. Once you've cloned the repository, navigate to the project directory in your terminal and run the following commands:
+### Prerequisites
+* Node.js 16+ and npm
+* MongoDB instance (local or Atlas)
 
-For frontend 
-```
-npm install 
-```
-For backend
-```
-cd API
+### Install
+
+```bash
+# Frontend dependencies
 npm install
-```
-This will install the required dependencies for both the client and server applications.
 
-Next, create a .env file in the API directory with the following environment variables:
+# Backend dependencies
+cd API && npm install && cd ..
+```
+
+### Configure
+
+Create `API/.env`:
 ```
 MONGODB_URI=<your-mongodb-uri>
 JWT_SECRET=<your-jwt-secret>
 ```
-Replace <your-mongodb-uri> with the connection string for your MongoDB instance, and <your-jwt-secret> with a secret string of your choice.
 
-Finally, start the client and server applications with the following commands:
+### Run
+
+Start the backend (runs on http://localhost:1337):
+```bash
+cd API && node server.js
 ```
+
+Start the frontend dev server (runs on http://localhost:5173):
+```bash
 npm run dev
 ```
-API
+
+Open http://localhost:5173 in your browser.
+
+### Test the audio visualizer
+
+1. Register or log in.
+2. Upload an audio file via the **Upload** page.
+3. Navigate to **Explore** and click a song card to play it.
+4. The visualizer (animated frequency bars, cyan → purple gradient) appears above the bottom player bar while the song plays, and fades out when paused or ended.
+
+### Build for production
+
+```bash
+npm run build   # outputs to dist/
 ```
-cd API
-node server.js
-```
-The client application will be available at http://localhost:5173, and the server will be running on http://localhost:1337.

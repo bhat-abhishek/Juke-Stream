@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import stereo from "../assets/stereo.jpg";
 import { SongContext } from "../Context/SongContext";
+import AudioVisualizer from "./AudioVisualizer";
 
 import { CiPlay1, CiPause1 } from "react-icons/ci";
 import { FiSkipBack, FiSkipForward } from "react-icons/fi";
@@ -48,9 +49,9 @@ const AudioPlayer = () => {
   };
 
   return (
-    <div
-      className={` fixed flex justify-around lg:justify-center lg:space-x-40 items-center bottom-0 right-0 left-0 bg-gray-900 text-white px-5 py-2 shadow-xl`}
-    >
+    <div className="fixed bottom-0 right-0 left-0 flex flex-col bg-gray-900 text-white shadow-xl">
+      <AudioVisualizer />
+      <div className="flex justify-around lg:justify-center lg:space-x-40 items-center px-5 py-2">
       <div className="flex space-x-5">
         <img src={stereo} alt="" className="rounded-lg w-12" />
         <div>
@@ -85,6 +86,7 @@ const AudioPlayer = () => {
           {calculateTime(parseInt(currentTime))}/
           {calculateTime(parseInt(duration))}
         </p>
+      </div>
       </div>
     </div>
   );
