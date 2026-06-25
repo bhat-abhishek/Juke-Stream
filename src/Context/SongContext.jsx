@@ -10,6 +10,7 @@ export const SongContextState = ({ children }) => {
     __URL__ = ""
   }
   const audio = new Audio();
+  audio.crossOrigin = "anonymous";
   const song = {
     songUrl: "",
     songName: "",
